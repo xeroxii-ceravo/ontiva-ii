@@ -37,7 +37,7 @@ export default function ProductCard({ product }: { product: Product }) {
               src={image}
               alt={title}
               fill
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              sizes="(max-width: 1023px) 50vw, 25vw"
               className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105 motion-reduce:transform-none"
             />
           </Link>
@@ -54,7 +54,7 @@ export default function ProductCard({ product }: { product: Product }) {
             <Heart size={20} strokeWidth={1.5} fill={saved ? "currentColor" : "none"} />
           </motion.button>
         </div>
-        <div className="flex flex-1 flex-col p-6">
+        <div className="flex flex-1 flex-col p-3 sm:p-6">
           <div className="mb-6">
             <Link
               href={`/product/${id}`}
@@ -75,11 +75,13 @@ export default function ProductCard({ product }: { product: Product }) {
               aria-label={`Add ${title} to cart`}
               onClick={() => {
                 addItem({ id, name: title, price, image });
+                useCartStore.setState({ cartOpen: true });
                 setAdded(true);
               }}
-              className="flex size-12 items-center justify-center border border-zinc-700 text-luxury-gold transition-colors hover:border-luxury-gold hover:bg-luxury-gold hover:text-black"
+              className="flex min-h-12 w-full items-center justify-center gap-2 border border-zinc-700 px-2 text-xs text-luxury-gold transition-colors hover:border-luxury-gold hover:bg-luxury-gold hover:text-black"
             >
               {added ? <Check size={20} /> : <Plus size={20} />}
+              Add to Cart
             </motion.button>
           </div>
           <span className="sr-only" role="status">

@@ -29,6 +29,7 @@ export const useCartStore = create<CartState>()(
       cart: [],
       cartOpen: false,
       addItem: (item, quantity = 1) => {
+        if (!Number.isInteger(quantity) || quantity < 1 || quantity > 99) return;
         set((state) => {
           const existingItem = state.cart.find((i) => i.id === item.id);
           if (existingItem) {
@@ -36,7 +37,7 @@ export const useCartStore = create<CartState>()(
             return {
               cart: state.cart.map((i) =>
                 i.id === item.id
-                  ? { ...i, quantity: i.quantity + quantity }
+                  ? { ...i, quantity: Math.min(99, i.quantity + quantity) }
                   : i
               ),
             };
@@ -54,6 +55,7 @@ export const useCartStore = create<CartState>()(
         }));
       },
       updateQuantity: (id, quantity) => {
+        if (!Number.isInteger(quantity) || quantity < 0 || quantity > 99) return;
         set((state) => {
           if (quantity < 1) {
             // Remove the item

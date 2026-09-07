@@ -1,3 +1,6 @@
+import { bagProducts, bagImagePath } from "./bags";
+import { partyHillsProducts, partyHillsImagePath } from "./partyHills";
+
 export interface Product {
   id: number;
   title: string;
@@ -6,7 +9,7 @@ export interface Product {
   image: string;
 }
 
-export const products: Product[] = [
+export const newArrivals: Product[] = [
   {
     id: 1,
     title: "The Sovereign Monogram Satchel",
@@ -40,7 +43,7 @@ export const products: Product[] = [
     title: "Silk Embroidered Pump",
     description: "18k gold hollow hoops with hinged backs",
     price: 4800,
-    image: "/products/shoes/IMG_0763.JPEG",
+    image: "/products/shoes/IMG_0763.JPG.jpeg",
   },
   {
     id: 6,
@@ -50,3 +53,34 @@ export const products: Product[] = [
     image: "/products/bags/IMG_3962.JPG.jpeg",
   },
 ];
+
+// Filename-derived IDs stay stable when curated arrays are reordered or extended.
+function catalogId(key: string): number {
+  let hash = 2166136261;
+  for (let index = 0; index < key.length; index++) {
+    hash = Math.imul(hash ^ key.charCodeAt(index), 16777619);
+  }
+  return (hash >>> 0) + 100;
+}
+
+export const bags: Product[] = bagProducts.map((item) => ({
+  id: catalogId(`bags/${item.filename}`),
+  title: item.title,
+  description: "Discover this piece from the ONTIVA bags collection.",
+  price: item.price,
+  image: bagImagePath(item.filename),
+}));
+
+export const partyHills: Product[] = partyHillsProducts.map((item) => ({
+  id: catalogId(`party hills/${item.filename}`),
+  title: item.title,
+  description: "Discover this piece from the ONTIVA occasion footwear collection.",
+  price: item.price,
+  image: partyHillsImagePath(item.filename),
+}));
+
+export const products: Product[] = [...newArrivals, ...bags, ...partyHills];
+
+if (new Set(products.map((product) => product.id)).size !== products.length) {
+  throw new Error("Catalog product IDs must be unique.");
+}

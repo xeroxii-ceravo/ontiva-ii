@@ -1,8 +1,6 @@
-import Image from "next/image";
+import ProductCard from "@/components/ProductCard";
 import FadeIn from "@/components/FadeIn";
-import GlowWrapper from "@/components/GlowWrapper";
-import { bagImagePath, bagProducts } from "@/data/bags";
-import { formatBDT } from "@/lib/currency";
+import { bags } from "@/data/products";
 
 export default function BagsSection() {
   return (
@@ -17,25 +15,9 @@ export default function BagsSection() {
           <span className="shrink-0 text-[10px] tracking-widest text-zinc-500">THE SIGNATURE EDIT</span>
         </FadeIn>
         <div className="grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-4">
-          {bagProducts.slice(0, 15).map((product, index) => (
-            <FadeIn key={product.filename} delay={(index % 4) * 0.09} className="h-full">
-              <GlowWrapper className="group h-full border border-zinc-800 bg-[#121212] transition-colors hover:border-luxury-gold/40">
-                <article className="flex h-full flex-col">
-                  <div className="relative aspect-[3/4] overflow-hidden bg-[#121212]">
-                      <Image
-                        src={bagImagePath(product.filename)}
-                        alt={product.title}
-                        fill
-                        sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, (max-width: 1280px) 25vw, 280px"
-                        className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105 motion-reduce:transform-none"
-                      />
-                  </div>
-                  <div className="flex flex-1 flex-col border-t border-zinc-800 p-5">
-                    <h3 className="break-words font-serif text-lg leading-6 text-zinc-100">{product.title}</h3>
-                    <p className="mt-auto pt-4 text-sm tracking-wide text-amber-400">{formatBDT(product.price)}</p>
-                  </div>
-                </article>
-              </GlowWrapper>
+          {bags.slice(0, 15).map((product, index) => (
+            <FadeIn key={product.id} delay={(index % 4) * 0.09} className="h-full">
+              <ProductCard product={product} />
             </FadeIn>
           ))}
         </div>

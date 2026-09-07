@@ -4,7 +4,7 @@ import Hero from "@/components/Hero";
 import ProductGrid from "@/components/ProductGrid";
 import Testimonials from "@/components/Testimonials";
 import InstagramGrid from "@/components/InstagramGrid";
-import { products } from "@/data/products";
+import { newArrivals } from "@/data/products";
 export default function Home() {
   return (
     <>
@@ -13,7 +13,8 @@ export default function Home() {
         id="new-arrivals"
         title="NEW ARRIVALS"
         subtitle="Discover your next signature piece."
-        items={products.filter(product => product.price === 4200).slice(0, 15)}
+        items={newArrivals.slice(0, 4)}
+        viewAllHref="/new-arrivals"
       />
       <CategorySections />
       <FadeIn>

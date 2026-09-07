@@ -39,7 +39,7 @@ export default function LuxuryDrawer({ open, title, onClose, children, fullScree
       onCancel={(event) => { event.preventDefault(); onClose(); }}
       className="fixed inset-0 m-0 h-[100dvh] max-h-none w-full max-w-none overflow-hidden bg-transparent p-0 text-white backdrop:bg-black/70 backdrop:backdrop-blur-sm"
     >
-      <AnimatePresence onExitComplete={() => dialog.current?.close()}>
+      <AnimatePresence onExitComplete={() => { if (!open) dialog.current?.close(); }}>
         {open && (
           <motion.div key="drawer" className="relative flex h-full justify-end" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: reduced ? 0 : 0.2 }}>
             <button type="button" tabIndex={-1} aria-label={`Close ${title}`} onClick={onClose} className="absolute inset-0" />

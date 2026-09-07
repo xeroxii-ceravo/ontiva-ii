@@ -52,7 +52,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
               </button>
               <span className="mx-4 w-16 text-center">{quantity}</span>
               <button
-                onClick={() => setQuantity((q) => q + 1)}
+                onClick={() => setQuantity((q) => Math.min(99, q + 1))}
                 className="w-10 h-10 flex items-center justify-center bg-luxury-lighter/20 border border-luxury-lighter/30 hover:bg-luxury-gold/10 transition-colors"
               >
                 +
@@ -62,12 +62,15 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row sm:space-x-4 mb-6">
               <button
-                onClick={() => addItem({
+                onClick={() => {
+                  addItem({
                   id: product.id,
                   name: product.title,
                   price: product.price,
                   image: product.image,
-                }, quantity)}
+                  }, quantity);
+                  useCartStore.setState({ cartOpen: true });
+                }}
                 className="flex-1 flex items-center justify-center px-6 py-3 bg-luxury-gold text-luxury-dark font-medium hover:bg-luxury-gold/90 transition-colors"
               >
                 <ShoppingCart className="mr-2 h-4 w-4" />

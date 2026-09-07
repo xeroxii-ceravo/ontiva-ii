@@ -10,12 +10,14 @@ interface ProductGridProps {
   subtitle?: string;
   items?: Product[];
   id?: string;
+  viewAllHref?: string;
 }
 export default function ProductGrid({
   title = "FEATURED COLLECTION",
   subtitle = "Exceptional pieces. Enduring style.",
   items = products,
   id = "collections",
+  viewAllHref = "/shop",
 }: ProductGridProps) {
   return (
     <section
@@ -34,10 +36,10 @@ export default function ProductGrid({
           <p className="mt-3 text-sm text-zinc-400">{subtitle}</p>
         </div>
         <MagneticLink
-          href="/shop"
+          href={viewAllHref}
           className="flex shrink-0 items-center gap-2 border-b border-luxury-gold/50 pb-2 text-[10px] tracking-widest text-luxury-gold"
         >
-          VIEW ALL <ArrowRight size={14} />
+          SEE ALL <ArrowRight size={14} />
         </MagneticLink>
       </FadeIn>
       <div className="grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-4">

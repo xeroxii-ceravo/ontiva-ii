@@ -1,19 +1,11 @@
-import Link from "next/link";
+import CheckoutForm from "@/components/CheckoutForm";
+
+export const dynamic = "force-dynamic";
 
 export default function CheckoutPage() {
-  return (
-    <div className="min-h-screen bg-luxury-dark flex items-center justify-center">
-      <div className="text-center text-luxury-lighter/60">
-        <h1 className="text-3xl font-playfairDisplay mb-6">Checkout</h1>
-        <p className="mb-4">
-          This is a placeholder for the checkout page.
-          In a real application, you would integrate a payment gateway here.
-        </p>
-        <Link href="/" className="hover:text-luxury-gold transition-colors">
-          Continue Shopping
-        </Link>
-      </div>
-    </div>
-  );
+  const enabled = Boolean(process.env.ORDER_SERVICE_URL && process.env.ORDER_SERVICE_TOKEN);
+  return <section className="mx-auto min-h-screen max-w-6xl px-6 py-12 sm:px-10">
+    <h1 className="mb-10 font-serif text-3xl text-white">Checkout</h1>
+    <CheckoutForm enabled={enabled} />
+  </section>;
 }
-
