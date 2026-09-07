@@ -14,7 +14,7 @@ export default function Hero() {
       <div className="mx-auto w-full max-w-7xl px-6 py-24 sm:px-10 lg:px-12">
         <p className="mb-7 text-[10px] tracking-[0.4em] text-luxury-gold sm:text-xs">THE ART OF EVERYDAY LUXURY</p>
         <h1 id="hero-title" className="max-w-2xl font-serif text-4xl leading-[1.15] tracking-wide text-white sm:text-6xl lg:text-7xl">WHERE ELEGANCE<br />MEETS <span className="italic text-[#ddc898]">TIMELESS</span></h1>
-        <p className="mt-7 max-w-sm text-sm leading-7 text-zinc-400">Designed for modern women who appreciate luxury in every detail.</p>
+        <p className="mt-7 max-w-sm text-sm leading-7 text-zinc-400">ONCE UPON A DAY - Onti Ek khudartho Pothshisur Jonno Regular Ranna Kore Khabar niye Jeto 😭</p>
         <Link href="/shop" className="mt-9 inline-flex items-center gap-9 border border-luxury-gold px-8 py-4 text-xs tracking-[0.2em] text-luxury-gold transition-colors hover:bg-luxury-gold hover:text-black">SHOP NOW <ArrowRight size={17} /></Link>
       </div>
     </section>
