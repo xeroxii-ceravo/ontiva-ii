@@ -42,7 +42,7 @@ export default function Testimonials() {
           {testimonials.map((t) => (
             <div key={t.id} className="flex flex-col items-start gap-6 p-8 border border-zinc-900 rounded-lg hover:border-zinc-800 transition-colors">
               <p className="max-w-sm text-sm leading-7 text-zinc-400 italic">
-                "{t.quote}"
+                &ldquo;{t.quote}&rdquo;
               </p>
               <div className="flex items-center gap-3">
                 {[1, 2, 3, 4, 5].map((star) => (
