@@ -1,8 +1,9 @@
 "use client";
 
 import { useCartStore } from "@/store/useCartStore";
-import { ShoppingCart, X, CheckCircle, Truck } from "lucide-react";
+import { ShoppingCart, X } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function CartDrawer() {
   const { cart, cartOpen, toggleCart, removeItem, updateQuantity, getTotal, getItemCount } = useCartStore();
@@ -16,13 +17,14 @@ export default function CartDrawer() {
   const freeShippingMissing = Math.max(0, FREE_SHIPPING_THRESHOLD - subtotal);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end bg-black/50 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 flex justify-end bg-black/70 backdrop-blur-sm">
+      <button aria-label="Close cart" onClick={toggleCart} className="absolute inset-0" />
       {/* Cart Drawer */}
-      <div className="w-full max-w-xs p-6 bg-luxury-dark text-white border-t border-luxury-lighter/20 transform translate-x-0 transition-transform duration-300 ease-in-out">
+      <div role="dialog" aria-label="Shopping cart" className="relative h-full w-full max-w-md overflow-y-auto border-l border-zinc-800 bg-luxury-dark p-6 text-white">
         {/* Header */}
         <div className="flex justify-between items-start mb-6">
           <h2 className="text-2xl font-playfairDisplay">Shopping Cart</h2>
-          <button onClick={toggleCart} className="hover:text-luxury-gold transition-colors">
+          <button aria-label="Close cart" onClick={toggleCart} className="hover:text-luxury-gold transition-colors">
             <X className="h-5 w-5" />
           </button>
         </div>
@@ -38,7 +40,7 @@ export default function CartDrawer() {
               <div key={item.id} className="flex flex-col mb-6 last:mb-0">
                 {/* Item Details */}
                 <div className="flex items-start mb-4">
-                  <img
+                  <Image unoptimized width={96} height={96}
                     src={item.image}
                     alt={item.name}
                     className="w-24 h-24 object-cover rounded-lg"
@@ -97,7 +99,7 @@ export default function CartDrawer() {
         {subtotal < FREE_SHIPPING_THRESHOLD && (
           <div className="mb-6">
             <p className="text-luxury-lighter/60 mb-2">
-              Free shipping on orders over $${FREE_SHIPPING_THRESHOLD.toFixed(2)}
+              Free shipping on orders over ${FREE_SHIPPING_THRESHOLD.toFixed(2)}
             </p>
             <div className="w-full bg-luxury-lighter/20 rounded-full h-2.5">
               <div
@@ -116,6 +118,7 @@ export default function CartDrawer() {
         {/* Checkout Button */}
         <Link
           href="/checkout"
+          onClick={toggleCart}
           className="w-full flex items-center justify-center px-6 py-3 bg-luxury-gold text-luxury-dark font-medium hover:bg-luxury-gold/90 transition-colors disabled:opacity-50"
         >
           <ShoppingCart className="mr-2 h-4 w-4" />

@@ -1,72 +1,27 @@
 "use client";
-
 import { useState } from "react";
-import { Heart, Plus } from "lucide-react";
+import { Heart, Plus, Check } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useCartStore } from "@/store/useCartStore";
 import { useWishlistStore } from "@/store/useWishlistStore";
-
-interface ProductCardProps {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  image: string;
+import type { Product } from "@/data/products";
+export default function ProductCard({ id, name, description, price, image }: Product) {
+  const [added, setAdded] = useState(false);
+  const addItem = useCartStore((s) => s.addItem);
+  const saved = useWishlistStore((s) => s.wishlist.includes(id));
+  const addToWishlist = useWishlistStore((s) => s.addToWishlist);
+  const removeFromWishlist = useWishlistStore((s) => s.removeFromWishlist);
+  return <article className="group flex h-full flex-col overflow-hidden border border-zinc-800 bg-[#121212] transition-colors hover:border-luxury-gold/40">
+    <div className="relative aspect-[4/5] overflow-hidden bg-[#191919]">
+      <Link href={`/product/${id}`} aria-label={`View ${name}`} className="block h-full"><Image unoptimized src={image} alt={name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" className="object-cover transition-transform duration-700 group-hover:scale-105" /></Link>
+      <button type="button" aria-label={`${saved ? "Remove" : "Save"} ${name} ${saved ? "from" : "to"} wishlist`} aria-pressed={saved} onClick={() => saved ? removeFromWishlist(id) : addToWishlist(id)} className="absolute right-3 top-3 flex size-10 items-center justify-center rounded-full border border-white/10 bg-black/65 text-luxury-gold hover:bg-black"><Heart size={17} strokeWidth={1.5} fill={saved ? "currentColor" : "none"} /></button>
+    </div>
+    <div className="flex flex-1 flex-col p-5">
+      <Link href={`/product/${id}`} className="font-serif text-lg leading-6 hover:text-luxury-gold">{name}</Link>
+      <p className="mt-2 line-clamp-2 text-xs leading-5 text-zinc-400">{description}</p>
+      <div className="mt-auto flex items-center justify-between pt-5"><span className="text-sm tracking-wide text-luxury-gold">${price.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span><button type="button" aria-label={`Add ${name} to cart`} onClick={() => { addItem({ id, name, price, image }); setAdded(true); }} className="flex size-10 items-center justify-center border border-zinc-700 text-luxury-gold transition-colors hover:border-luxury-gold hover:bg-luxury-gold hover:text-black">{added ? <Check size={17} /> : <Plus size={17} />}</button></div>
+      <span className="sr-only" role="status">{added ? `${name} added to cart` : ""}</span>
+    </div>
+  </article>;
 }
-
-export default function ProductCard({ id, name, description, price, image }: ProductCardProps) {
-  const [isHovered, setIsHovered] = useState(false);
-  const { addItem } = useCartStore();
-  const { addToWishlist, removeFromWishlist, hasProduct } = useWishlistStore();
-  const isInWishlist = hasProduct(id);
-
-  return (
-    <Link href={`/product/${id}`} className="group block hover:shadow-lg transition-shadow duration-300">
-      <article className="bg-luxury-lighter/5 border border-luxury-lighter/20 rounded-lg overflow-hidden flex flex-col h-full">
-        {/* Image Container */}
-        <div className="relative h-48 w-full">
-          <img
-            src={image}
-            alt={name}
-            className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
-          />
-          {/* Overlay on Hover */}
-          {isHovered && (
-            <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-              <Heart
-                className={`text-luxury-gold hover:text-luxury-lighter/80 transition-colors h-6 w-6 ${
-                  isInWishlist ? "text-luxury-gold" : ""
-                }`}
-                onClick={() => {
-                  if (isInWishlist) {
-                    removeFromWishlist(id);
-                  } else {
-                    addToWishlist(id);
-                  }
-                }}
-              />
-            </div>
-          )}
-        </div>
-
-        {/* Content */}
-        <div className="flex-1 flex flex-col p-4">
-          <h3 className="font-playfairDisplay text-lg mb-2 line-clamp-2">{name}</h3>
-          <p className="text-luxury-lighter/60 flex-1 mb-4 line-clamp-3">{description}</p>
-          <div className="mt-auto pt-4 border-t border-luxury-lighter/20">
-            <div className="flex justify-between items-baseline mb-2">
-              <span className="font-playfairDisplay text-xl text-luxury-gold">${price.toFixed(2)}</span>
-              <button
-                onClick={() => addItem({ id, name, price, image })}
-                className="p-2 rounded hover:bg-luxury-gold/10 transition-colors"
-              >
-                <Plus className="text-luxury-gold" />
-              </button>
-            </div>
-          </div>
-        </div>
-      </article>
-    </Link>
-  );
-}
-

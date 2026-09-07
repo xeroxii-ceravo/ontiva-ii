@@ -12,7 +12,7 @@ export const products: Product[] = [
     name: "Gold Pearl Necklace",
     description: "Freshwater pearls set in 18k gold with diamond clasp",
     price: 2450.00,
-    image: "https://images.unsplash.com/photo-1518717758535-3eaab8861fc2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
+    image: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
   },
   {
     id: 2,
@@ -47,7 +47,7 @@ export const products: Product[] = [
     name: "Black Alligator Leather Clutch",
     description: "Handcrafted clutch with gold-tone hardware and interior pocket",
     price: 1850.00,
-    image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
+    image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
   },
 ];
 

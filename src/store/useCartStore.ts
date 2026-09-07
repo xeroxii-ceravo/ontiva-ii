@@ -88,6 +88,7 @@ export const useCartStore = create<CartState>()(
     }),
     {
       name: "cart-storage",
+      skipHydration: true,
       partialize: (state) => ({
         cart: state.cart,
       }),

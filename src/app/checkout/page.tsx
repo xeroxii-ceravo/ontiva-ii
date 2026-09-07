@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function CheckoutPage() {
   return (
     <div className="min-h-screen bg-luxury-dark flex items-center justify-center">
@@ -7,9 +9,9 @@ export default function CheckoutPage() {
           This is a placeholder for the checkout page.
           In a real application, you would integrate a payment gateway here.
         </p>
-        <a href="/" className="hover:text-luxury-gold transition-colors">
-          ? Continue Shopping
-        </a>
+        <Link href="/" className="hover:text-luxury-gold transition-colors">
+          Continue Shopping
+        </Link>
       </div>
     </div>
   );
