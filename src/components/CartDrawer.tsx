@@ -20,7 +20,7 @@ export default function CartDrawer() {
     <div className="fixed inset-0 z-50 flex justify-end bg-black/70 backdrop-blur-sm">
       <button aria-label="Close cart" onClick={toggleCart} className="absolute inset-0" />
       {/* Cart Drawer */}
-      <div role="dialog" aria-label="Shopping cart" className="relative h-full w-full max-w-md overflow-y-auto border-l border-zinc-800 bg-luxury-dark p-6 text-white">
+      <div role="dialog" aria-label="Shopping cart" className="relative h-full w-full lg:max-w-md overflow-y-auto border-l border-zinc-800 bg-luxury-dark p-6 text-white">
         {/* Header */}
         <div className="flex justify-between items-start mb-6">
           <h2 className="text-2xl font-playfairDisplay">Shopping Cart</h2>
