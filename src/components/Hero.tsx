@@ -1,11 +1,11 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import FadeIn from "./FadeIn";
-import { ArrowRight, ArrowLeft, Truck, Gem, RotateCcw, ShieldCheck } from "lucide-react";
+import { ArrowRight, ArrowLeft, Pause, Play, Truck, Gem, RotateCcw, ShieldCheck } from "lucide-react";
 
 const slides = [
   { filename: "download (84).jpg", label: "The Signature Edit", alt: "Woman in sunglasses holding an ivory handbag from a car window" },
@@ -26,14 +26,47 @@ const features = [
 ];
 export default function Hero() {
   const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [loadedSlides, setLoadedSlides] = useState<number[]>([]);
   const reduceMotion = useReducedMotion();
-  const selectSlide = (index: number) => setActive((index + slides.length) % slides.length);
+  const rotating = !paused && reduceMotion === false;
+  const nextSlide = (active + 1) % slides.length;
+  const nextSlideLoaded = loadedSlides.includes(nextSlide);
+
+  useEffect(() => {
+    if (!rotating || !nextSlideLoaded) return;
+
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const schedule = () => {
+      clearTimeout(timer);
+      if (!document.hidden) {
+        timer = setTimeout(() => setActive(nextSlide), 6000);
+      }
+    };
+
+    schedule();
+    document.addEventListener("visibilitychange", schedule);
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener("visibilitychange", schedule);
+    };
+  }, [rotating, nextSlide, nextSlideLoaded]);
+
+  const selectSlide = (index: number) => {
+    setPaused(true);
+    setActive((index + slides.length) % slides.length);
+  };
 
   return (
     <>
       <section
         aria-labelledby="hero-title"
         aria-roledescription="carousel"
+        onFocusCapture={(event) => {
+          if (!(event.target instanceof Element) || !event.target.closest("[data-rotation-control]")) {
+            setPaused(true);
+          }
+        }}
         className="relative isolate h-[100dvh] w-full overflow-hidden border-b border-zinc-800 bg-[#0a0a0a]"
       >
         {slides.map((slide, index) => (
@@ -55,6 +88,7 @@ export default function Hero() {
               priority={index === 0}
               loading={index === 0 ? undefined : "eager"}
               sizes="100vw"
+              onLoad={() => setLoadedSlides((loaded) => loaded.includes(index) ? loaded : [...loaded, index])}
               className="object-cover object-center"
             />
           </motion.div>
@@ -80,11 +114,21 @@ export default function Hero() {
             </div>
           </div>
           <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-t border-white/20 pt-3 sm:pt-5">
-            <p aria-live="polite" aria-atomic="true" className="text-[10px] uppercase tracking-[0.18em] text-zinc-200">
+            <p aria-live={rotating ? "off" : "polite"} aria-atomic="true" className="text-[10px] uppercase tracking-[0.18em] text-zinc-200">
               <span className="mr-3 text-luxury-gold">{String(active + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}</span>
               {slides[active].label}
             </p>
             <div className="flex items-center gap-1 sm:gap-3" role="group" aria-label="Hero slide controls">
+              <button
+                type="button"
+                data-rotation-control
+                disabled={reduceMotion === true}
+                onClick={() => setPaused((value) => !value)}
+                aria-label={reduceMotion ? "Autoplay disabled by reduced-motion preference" : rotating ? "Pause hero slideshow" : "Play hero slideshow"}
+                className="flex size-11 items-center justify-center text-luxury-gold transition-colors hover:text-white disabled:cursor-default disabled:opacity-40"
+              >
+                {rotating ? <Pause size={16} aria-hidden="true" /> : <Play size={16} aria-hidden="true" />}
+              </button>
               <button type="button" onClick={() => selectSlide(active - 1)} aria-label="Previous hero slide" className="flex size-11 items-center justify-center text-white transition-colors hover:text-luxury-gold">
                 <ArrowLeft size={18} aria-hidden="true" />
               </button>
