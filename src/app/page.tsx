@@ -3,7 +3,7 @@ import FadeIn from "@/components/FadeIn";
 import Hero from "@/components/Hero";
 import ProductGrid from "@/components/ProductGrid";
 import Testimonials from "@/components/Testimonials";
-import InstagramGrid from "@/components/InstagramGrid";
+import OntivaMoments from "@/components/OntivaMoments";
 import { newArrivals } from "@/data/products";
 export default function Home() {
   return (
@@ -21,7 +21,7 @@ export default function Home() {
         <Testimonials />
       </FadeIn>
       <FadeIn>
-        <InstagramGrid />
+        <OntivaMoments />
       </FadeIn>
     </>
   );
