@@ -50,12 +50,12 @@ export default function CartDrawer() {
                      />
                    </GlowWrapper>
                    <div className="ml-4 flex-1">
-                    <h3 className="font-playfairDisplay text-lg mb-1 line-clamp-2">
-                      {item.name}
-                    </h3>
-<p className="text-luxury-lighter/60 mb-2 line-clamp-3">
-                       ৳{formatBDT(item.price)} each
-                     </p>
+<h3 className="font-playfairDisplay text-lg mb-1 line-clamp-2">
+                       {item.name}
+                     </h3>
+                     <p className="text-luxury-lighter/60 mb-2 line-clamp-3">
+                        ৳{formatBDT(item.price)} BDT each
+                      </p>
 
                     {/* Quantity Controls */}
                     <div className="flex items-center space-x-3">
@@ -95,16 +95,16 @@ export default function CartDrawer() {
         <div className="flex justify-between items-baseline mb-4">
           <span className="text-xl font-playfairDisplay">Subtotal</span>
 <span className="text-xl font-playfairDisplay text-luxury-gold">
-             ৳{formatBDT(subtotal)}
-           </span>
+              ৳{formatBDT(subtotal)} BDT
+            </span>
         </div>
 
         {/* Free Shipping Progress */}
         {subtotal < FREE_SHIPPING_THRESHOLD && (
           <div className="mb-6">
 <p className="text-luxury-lighter/60 mb-2">
-               Free shipping on orders over ৳{formatBDT(FREE_SHIPPING_THRESHOLD)}
-             </p>
+                Free shipping on orders over ৳{formatBDT(FREE_SHIPPING_THRESHOLD)} BDT
+              </p>
             <div className="w-full bg-luxury-lighter/20 rounded-full h-2.5">
               <div
                 className="bg-luxury-gold h-2.5 rounded-full"
@@ -112,10 +112,10 @@ export default function CartDrawer() {
               ></div>
             </div>
 <p className="text-xs text-luxury-lighter/50 mt-1">
-               {freeShippingMissing > 0
-                 ? `Add ৳{formatBDT(freeShippingMissing)} more to get free shipping`
-                 : "Free shipping unlocked!"}
-             </p>
+                {freeShippingMissing > 0
+                  ? `Add ৳{formatBDT(freeShippingMissing)} BDT more to get free shipping`
+                  : "Free shipping unlocked!"}
+              </p>
           </div>
         )}
 

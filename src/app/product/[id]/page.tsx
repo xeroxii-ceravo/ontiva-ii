@@ -39,7 +39,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
             <h1 className="font-playfairDisplay text-4xl mb-4 text-luxury-gold">{product.name}</h1>
             <p className="text-luxury-lighter/60 mb-6 line-clamp-4">{product.description}</p>
             <div className="mb-6">
-              <span className="font-playfairDisplay text-3xl text-luxury-gold">৳{formatBDT(product.price)}</span>
+              <span className="font-playfairDisplay text-3xl text-luxury-gold">৳{formatBDT(product.price)} BDT</span>
             </div>
 
             {/* Quantity Selector */}

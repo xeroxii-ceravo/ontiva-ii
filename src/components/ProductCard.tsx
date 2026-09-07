@@ -77,8 +77,8 @@ export default function ProductCard({
         </p>
         <div className="mt-auto flex items-center justify-between pt-5">
 <span className="text-sm tracking-wide text-luxury-gold">
-             ৳{formatBDT(price)}
-           </span>
+              ৳{formatBDT(price)} BDT
+            </span>
           <motion.button
             whileHover={{ opacity: 0.8 }}
             whileTap={{ scale: 0.96 }}
