@@ -5,7 +5,7 @@ import { products } from "@/data/products";
 import { Heart, ShoppingCart } from "lucide-react";
 import { useState } from "react";
 import { useCartStore } from "@/store/useCartStore";
-import { useWishlistStore } from "@/store/useWishlistStore};
+import { useWishlistStore } from "@/store/useWishlistStore";
 
 export default function ProductDetailPage({ params }: { params: { id: string } }) {
   const productId = parseInt(params.id);

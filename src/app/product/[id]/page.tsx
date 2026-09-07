@@ -58,7 +58,12 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row sm:space-x-4 mb-6">
               <button
-                onClick={() => addItem({ ...product, quantity })}
+                onClick={() => addItem({
+                  id: product.id,
+                  name: product.name,
+                  price: product.price,
+                  image: product.image,
+                }, quantity)}
                 className="flex-1 flex items-center justify-center px-6 py-3 bg-luxury-gold text-luxury-dark font-medium hover:bg-luxury-gold/90 transition-colors"
               >
                 <ShoppingCart className="mr-2 h-4 w-4" />
