@@ -21,20 +21,23 @@ export default function Footer() {
         {/* Explore */}
         <div>
           <h2 className="mb-6 text-xs tracking-[0.2em]">EXPLORE</h2>
-          <div className="grid gap-4 text-sm text-zinc-400">
-            <Link href="/shop" className="hover:text-luxury-gold">
-              Shop all pieces
-            </Link>
-            <Link href="/#new-arrivals" className="hover:text-luxury-gold">
-              New arrivals
-            </Link>
-            <Link href="/#collections" className="hover:text-luxury-gold">
-              Featured collection
-            </Link>
-            <Link href="/wishlist" className="hover:text-luxury-gold">
-              Your wishlist
-            </Link>
-          </div>
+<div className="grid gap-4 text-sm text-zinc-400">
+             <Link href="/shop" className="hover:text-luxury-gold">
+               Shop all pieces
+             </Link>
+             <Link href="/#new-arrivals" className="hover:text-luxury-gold">
+               New arrivals
+             </Link>
+             <Link href="/#collections" className="hover:text-luxury-gold">
+               Featured collection
+             </Link>
+             <Link href="/wishlist" className="hover:text-luxury-gold">
+               Your wishlist
+             </Link>
+             <Link href="/founder" className="hover:text-luxury-gold">
+               Founder's Story
+             </Link>
+           </div>
         </div>
 
         {/* At Your Service */}

@@ -7,7 +7,15 @@ import { useCartStore } from "@/store/useCartStore";
 import { useWishlistStore } from "@/store/useWishlistStore";
 import { useWishlistDrawerStore } from "@/store/useWishlistDrawerStore";
 import MobileMenu from "./MobileMenu";
-const links = [["HOME", "/"], ["SHOP", "/shop"], ["COLLECTIONS", "/#collections"], ["ABOUT", "/#about"], ["CONTACT", "/#contact"]];
+import { formatBDT } from "@/lib/currency";
+const links = [
+  ["HOME", "/"],
+  ["SHOP", "/shop"],
+  ["COLLECTIONS", "/#collections"],
+  ["ABOUT", "/#about"],
+  ["FOUNDER", "/founder"],
+  ["CONTACT", "/#contact"]
+];
 export default function Navbar() {
   const pathname = usePathname();
   const toggleCart = useCartStore((s) => s.toggleCart);
@@ -17,7 +25,7 @@ export default function Navbar() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   return <header className="relative z-30 border-b border-zinc-800 bg-[#0a0a0a]">
-    <div className="border-b border-luxury-gold/15 bg-[#15130e] px-4 py-2.5 text-center text-[9px] tracking-[0.22em] text-[#d8c58d]">FREE SHIPPING ON ORDERS OVER $150</div>
+    <div className="border-b border-luxury-gold/15 bg-[#15130e] px-4 py-2.5 text-center text-[9px] tracking-[0.22em] text-[#d8c58d]">FREE SHIPPING ON ORDERS OVER ৳{formatBDT(150)}</div>
     <nav aria-label="Main navigation" className="mx-auto flex min-h-24 max-w-7xl items-center justify-between gap-6 px-6 sm:px-10 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:px-12">
       <Link href="/" className="font-serif text-3xl tracking-[0.24em]">ONTIVA</Link>
       <div className="hidden items-center gap-7 lg:flex">{links.map(([label, href]) => <Link key={label} href={href} aria-current={pathname === href ? "page" : undefined} className={`text-[10px] tracking-[0.15em] transition-colors hover:text-luxury-gold ${pathname === href ? "text-luxury-gold" : "text-zinc-300"}`}>{label}</Link>)}</div>

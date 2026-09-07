@@ -4,6 +4,8 @@ import { useCartStore } from "@/store/useCartStore";
 import { ShoppingCart, X } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { formatBDT } from "@/lib/currency";
+import GlowWrapper from "@/components/GlowWrapper";
 
 export default function CartDrawer() {
   const { cart, cartOpen, toggleCart, removeItem, updateQuantity, getTotal, getItemCount } = useCartStore();
@@ -39,19 +41,21 @@ export default function CartDrawer() {
             {cart.map((item) => (
               <div key={item.id} className="flex flex-col mb-6 last:mb-0">
                 {/* Item Details */}
-                <div className="flex items-start mb-4">
-                  <Image unoptimized width={96} height={96}
-                    src={item.image}
-                    alt={item.name}
-                    className="w-24 h-24 object-cover rounded-lg"
-                  />
-                  <div className="ml-4 flex-1">
+<div className="flex items-start mb-4">
+                   <GlowWrapper className="w-24 h-24">
+                     <Image unoptimized width={96} height={96}
+                       src={item.image}
+                       alt={item.name}
+                       className="w-24 h-24 object-cover rounded-lg"
+                     />
+                   </GlowWrapper>
+                   <div className="ml-4 flex-1">
                     <h3 className="font-playfairDisplay text-lg mb-1 line-clamp-2">
                       {item.name}
                     </h3>
-                    <p className="text-luxury-lighter/60 mb-2 line-clamp-3">
-                      ${item.price.toFixed(2)} each
-                    </p>
+<p className="text-luxury-lighter/60 mb-2 line-clamp-3">
+                       ৳{formatBDT(item.price)} each
+                     </p>
 
                     {/* Quantity Controls */}
                     <div className="flex items-center space-x-3">
@@ -90,28 +94,28 @@ export default function CartDrawer() {
         {/* Subtotal */}
         <div className="flex justify-between items-baseline mb-4">
           <span className="text-xl font-playfairDisplay">Subtotal</span>
-          <span className="text-xl font-playfairDisplay text-luxury-gold">
-            ${subtotal.toFixed(2)}
-          </span>
+<span className="text-xl font-playfairDisplay text-luxury-gold">
+             ৳{formatBDT(subtotal)}
+           </span>
         </div>
 
         {/* Free Shipping Progress */}
         {subtotal < FREE_SHIPPING_THRESHOLD && (
           <div className="mb-6">
-            <p className="text-luxury-lighter/60 mb-2">
-              Free shipping on orders over ${FREE_SHIPPING_THRESHOLD.toFixed(2)}
-            </p>
+<p className="text-luxury-lighter/60 mb-2">
+               Free shipping on orders over ৳{formatBDT(FREE_SHIPPING_THRESHOLD)}
+             </p>
             <div className="w-full bg-luxury-lighter/20 rounded-full h-2.5">
               <div
                 className="bg-luxury-gold h-2.5 rounded-full"
                 style={{ width: `${(subtotal / FREE_SHIPPING_THRESHOLD) * 100}%` }}
               ></div>
             </div>
-            <p className="text-xs text-luxury-lighter/50 mt-1">
-              {freeShippingMissing > 0
-                ? `Add $${freeShippingMissing.toFixed(2)} more to get free shipping`
-                : "Free shipping unlocked!"}
-            </p>
+<p className="text-xs text-luxury-lighter/50 mt-1">
+               {freeShippingMissing > 0
+                 ? `Add ৳{formatBDT(freeShippingMissing)} more to get free shipping`
+                 : "Free shipping unlocked!"}
+             </p>
           </div>
         )}
 

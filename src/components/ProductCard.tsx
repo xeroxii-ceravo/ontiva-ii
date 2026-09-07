@@ -6,6 +6,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCartStore } from "@/store/useCartStore";
 import { useWishlistStore } from "@/store/useWishlistStore";
+import { formatBDT } from "@/lib/currency";
+import GlowWrapper from "@/components/GlowWrapper";
 import type { Product } from "@/data/products";
 export default function ProductCard({
   id,
@@ -25,44 +27,44 @@ export default function ProductCard({
       transition={{ type: "spring", stiffness: 220, damping: 26 }}
       className="group flex h-full flex-col overflow-hidden border border-zinc-800 bg-[#121212] transition-colors hover:border-luxury-gold/40"
     >
-      <div className="relative aspect-[4/5] overflow-hidden bg-[#191919]">
-        <Link
-          href={`/product/${id}`}
-          aria-label={`View ${name}`}
-          className="block h-full"
-        >
-          <motion.div
-            className="relative h-full"
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <Image
-              unoptimized
-              src={image}
-              alt={name}
-              fill
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-              className="object-cover"
-            />
-          </motion.div>
-        </Link>
-        <motion.button
-          whileHover={{ opacity: 0.8 }}
-          whileTap={{ scale: 0.96 }}
-          transition={{ duration: 0.2 }}
-          type="button"
-          aria-label={`${saved ? "Remove" : "Save"} ${name} ${saved ? "from" : "to"} wishlist`}
-          aria-pressed={saved}
-          onClick={() => (saved ? removeFromWishlist(id) : addToWishlist(id))}
-          className="absolute right-4 top-4 flex size-12 items-center justify-center rounded-full border border-white/10 bg-black/65 text-luxury-gold hover:bg-black"
-        >
-          <Heart
-            size={20}
-            strokeWidth={1.5}
-            fill={saved ? "currentColor" : "none"}
-          />
-        </motion.button>
-      </div>
+<GlowWrapper className="relative aspect-[4/5] overflow-hidden bg-[#191919]">
+         <Link
+           href={`/product/${id}`}
+           aria-label={`View ${name}`}
+           className="block h-full"
+         >
+           <motion.div
+             className="relative h-full"
+             whileHover={{ scale: 1.02 }}
+             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+           >
+             <Image
+               unoptimized
+               src={image}
+               alt={name}
+               fill
+               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+               className="object-cover"
+             />
+           </motion.div>
+         </Link>
+         <motion.button
+           whileHover={{ opacity: 0.8 }}
+           whileTap={{ scale: 0.96 }}
+           transition={{ duration: 0.2 }}
+           type="button"
+           aria-label={`${saved ? "Remove" : "Save"} ${name} ${saved ? "from" : "to"} wishlist`}
+           aria-pressed={saved}
+           onClick={() => (saved ? removeFromWishlist(id) : addToWishlist(id))}
+           className="absolute right-4 top-4 flex size-12 items-center justify-center rounded-full border border-white/10 bg-black/65 text-luxury-gold hover:bg-black"
+         >
+           <Heart
+             size={20}
+             strokeWidth={1.5}
+             fill={saved ? "currentColor" : "none"}
+           />
+         </motion.button>
+       </GlowWrapper>
       <div className="flex flex-1 flex-col p-6">
         <Link
           href={`/product/${id}`}
@@ -74,13 +76,9 @@ export default function ProductCard({
           {description}
         </p>
         <div className="mt-auto flex items-center justify-between pt-5">
-          <span className="text-sm tracking-wide text-luxury-gold">
-            $
-            {price.toLocaleString("en-US", {
-              minimumFractionDigits: 2,
-              maximumFractionDigits: 2,
-            })}
-          </span>
+<span className="text-sm tracking-wide text-luxury-gold">
+             ৳{formatBDT(price)}
+           </span>
           <motion.button
             whileHover={{ opacity: 0.8 }}
             whileTap={{ scale: 0.96 }}

@@ -7,6 +7,8 @@ import { use, useState } from "react";
 import Image from "next/image";
 import { useCartStore } from "@/store/useCartStore";
 import { useWishlistStore } from "@/store/useWishlistStore";
+import { formatBDT } from "@/lib/currency";
+import GlowWrapper from "@/components/GlowWrapper";
 
 export default function ProductDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
@@ -23,21 +25,21 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
     <div className="min-h-screen bg-luxury-dark">
       <div className="px-6 py-12 md:py-20">
         <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Image */}
-          <div className="relative h-80 lg:h-96">
-            <Image unoptimized fill sizes="(max-width: 1024px) 100vw, 50vw"
-              src={product.image}
-              alt={product.name}
-              className="object-cover w-full h-full rounded-lg"
-            />
-          </div>
+{/* Image */}
+           <GlowWrapper className="relative h-80 lg:h-96">
+             <Image unoptimized fill sizes="(max-width: 1024px) 100vw, 50vw"
+               src={product.image}
+               alt={product.name}
+               className="object-cover w-full h-full rounded-lg"
+             />
+           </GlowWrapper>
 
           {/* Details */}
           <div className="flex flex-col">
             <h1 className="font-playfairDisplay text-4xl mb-4 text-luxury-gold">{product.name}</h1>
             <p className="text-luxury-lighter/60 mb-6 line-clamp-4">{product.description}</p>
             <div className="mb-6">
-              <span className="font-playfairDisplay text-3xl text-luxury-gold">${product.price.toFixed(2)}</span>
+              <span className="font-playfairDisplay text-3xl text-luxury-gold">৳{formatBDT(product.price)}</span>
             </div>
 
             {/* Quantity Selector */}

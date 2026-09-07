@@ -8,6 +8,7 @@ const links = [
   ["SHOP", "/shop"],
   ["COLLECTIONS", "/#collections"],
   ["ABOUT", "/#about"],
+  ["FOUNDER", "/founder"],
   ["CONTACT", "/#contact"],
 ];
 
