@@ -1,3 +1,5 @@
+"use client";
+
 import { useWishlistStore } from "@/store/useWishlistStore";
 import { products } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
