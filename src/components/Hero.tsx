@@ -8,10 +8,9 @@ import FadeIn from "./FadeIn";
 import { ArrowRight, ArrowLeft, Pause, Play, Truck, Gem, RotateCcw, ShieldCheck } from "lucide-react";
 
 const slides = [
-  { filename: "download (84).jpg", label: "The Signature Edit", alt: "Woman in sunglasses holding an ivory handbag from a car window" },
-  { filename: "Minimal Chic Street Style Outfit – Elegant Urban Fashion Look.jpg", label: "City in Motion", alt: "Woman in a black suit carrying a red handbag on a city street" },
-  { filename: "download (82).jpg", label: "Golden Hour", alt: "Fashion portrait in flowing golden fabric and warm sunlight" },
-  { filename: "Brown Chocolate Editorial OOTD.jpg", label: "The Chocolate Edit", alt: "Chocolate brown handbag and heels styled with ivory trousers" },
+  { filename: "ChatGPT Image Sep 7, 2026, 01_06_29 PM.png", label: "Timeless Opulence", alt: "Woman in sunglasses holding an ivory handbag from the window of a silver classic car" },
+  { filename: "ChatGPT Image Sep 7, 2026, 01_09_30 PM.png", label: "Golden Reverie", alt: "Woman surrounded by flowing golden fabric in warm sunlight" },
+  { filename: "ChatGPT Image Sep 7, 2026, 01_10_54 PM.png", label: "Understated Elegance", alt: "Chocolate brown handbag and pointed heels styled with ivory trousers" },
 ] as const;
 
 const features = [
@@ -40,7 +39,7 @@ export default function Hero() {
     const schedule = () => {
       clearTimeout(timer);
       if (!document.hidden) {
-        timer = setTimeout(() => setActive(nextSlide), 6000);
+        timer = setTimeout(() => setActive(nextSlide), 6500);
       }
     };
 
@@ -93,16 +92,16 @@ export default function Hero() {
             />
           </motion.div>
         ))}
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-black/40 to-black/30" />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-black/40 to-black/20" />
         <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-6 pb-6 pt-6 sm:px-10 sm:pb-10 lg:px-12">
           <div className="max-w-2xl pb-6 sm:pb-10">
-            <p className="mb-4 text-[10px] tracking-[0.3em] text-luxury-gold sm:text-xs">THE ART OF EVERYDAY LUXURY</p>
+            <p className="mb-4 text-[10px] tracking-[0.3em] text-luxury-gold sm:text-xs">ONTIVA / THE ART OF REFINED LIVING</p>
             <h1 id="hero-title" className="font-serif text-[clamp(2rem,5.5vw,5rem)] leading-[1.05] tracking-wide text-white [@media(max-height:500px)]:text-3xl">
-              WHERE ELEGANCE<br />
-              MEETS <span className="italic text-[#ddc898]">TIMELESS</span>
+              TIMELESS<br />
+              <span className="italic text-[#ddc898]">OPULENCE</span>
             </h1>
             <p className="mt-5 max-w-md text-sm leading-6 text-zinc-200 [@media(max-height:500px)]:hidden">
-              Considered details. Unforgettable presence. Discover bags and footwear for every chapter of your day.
+              Sculpted silhouettes. Golden details. Discover bags and footwear that make every arrival unforgettable.
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-3 sm:gap-4">
               <Link href="/shop" className="inline-flex min-h-12 items-center gap-6 border border-luxury-gold bg-luxury-gold px-6 py-3 text-[10px] tracking-[0.18em] text-black transition-colors hover:bg-[#e3c665]">
