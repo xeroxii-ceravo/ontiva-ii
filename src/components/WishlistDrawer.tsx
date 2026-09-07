@@ -7,14 +7,12 @@ import Image from "next/image";
 import { products } from "@/data/products";
 
 export default function WishlistDrawer() {
-  const { wishlistOpen, wishlist, toggleWishlistDrawer } = useWishlistDrawerStore();
+  const wishlistOpen = useWishlistDrawerStore((state) => state.wishlistOpen);
+  const toggleWishlistDrawer = useWishlistDrawerStore((state) => state.toggleWishlistDrawer);
+  const wishlist = useWishlistStore((state) => state.wishlist);
+  const removeFromWishlist = useWishlistStore((state) => state.removeFromWishlist);
   if (!wishlistOpen) return null;
   const wishlistProducts = products.filter((product) => wishlist.includes(product.id));
-
-  if (wishlistProducts.length === 0) {
-    // If wishlist is empty, we still want to show the drawer with a message
-    // We'll let the JSX handle it
-  }
 
   return (
     <div className="fixed inset-0 z-50 flex justify-end">
@@ -61,10 +59,7 @@ export default function WishlistDrawer() {
 
                 {/* Remove Button */}
                 <button
-                  onClick={() => {
-                    const removeFromWishlist = useWishlistStore.getState().removeFromWishlist;
-                    removeFromWishlist(product.id);
-                  }}
+                  onClick={() => removeFromWishlist(product.id)}
                   className="self-end text-luxury-lighter/50 hover:text-luxury-gold transition-colors"
                 >
                   Remove
