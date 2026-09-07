@@ -47,7 +47,7 @@ export default function ProductGrid({
             delay={(index % 4) * 0.09}
             className="h-full"
           >
-            <ProductCard {...product} />
+            <ProductCard product={product} />
           </FadeIn>
         ))}
       </div>

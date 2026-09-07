@@ -5,6 +5,7 @@ import { useWishlistDrawerStore } from "@/store/useWishlistDrawerStore";
 import { X } from "lucide-react";
 import Image from "next/image";
 import { products } from "@/data/products";
+import { formatBDT } from "@/lib/currency";
 
 export default function WishlistDrawer() {
   const wishlistOpen = useWishlistDrawerStore((state) => state.wishlistOpen);
@@ -44,15 +45,15 @@ export default function WishlistDrawer() {
                 <div className="flex items-start mb-4">
                   <Image unoptimized width={96} height={96}
                     src={product.image}
-                    alt={product.name}
+                    alt={product.title}
                     className="w-24 h-24 object-cover rounded-lg"
                   />
                   <div className="ml-4 flex-1">
                     <h3 className="font-playfairDisplay text-lg mb-1 line-clamp-2">
-                      {product.name}
+                      {product.title}
                     </h3>
                     <p className="text-luxury-lighter/60 mb-2 line-clamp-3">
-                      ${product.price.toFixed(2)}
+                      {formatBDT(product.price)}
                     </p>
                   </div>
                 </div>

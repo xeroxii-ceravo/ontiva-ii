@@ -1,6 +1,6 @@
 export interface Product {
   id: number;
-  name: string;
+  title: string;
   description: string;
   price: number;
   image: string;
@@ -9,45 +9,44 @@ export interface Product {
 export const products: Product[] = [
   {
     id: 1,
-    name: "Gold Pearl Necklace",
+    title: "The Sovereign Monogram Satchel",
     description: "Freshwater pearls set in 18k gold with diamond clasp",
-    price: 2450.00,
-    image: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
+    price: 4200,
+    image: "/products/bags/IMG_3961.JPG.jpeg",
   },
   {
     id: 2,
-    name: "Diamond Tennis Bracelet",
+    title: "Aura Velvet Crossbody",
     description: "3-carat total weight diamonds in platinum setting",
-    price: 8900.00,
-    image: "https://images.unsplash.com/photo-1515562141207-7b89afe32f56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
+    price: 3800,
+    image: "/products/parts/IMG_3953.JPG.jpeg",
   },
   {
     id: 3,
-    name: "Leather Chronograph Watch",
+    title: "Midnight Noir Handbag",
     description: "Swiss-made automatic movement with full-grain leather strap",
-    price: 3200.00,
-    image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
+    price: 5500,
+    image: "/products/party hills/IMG_0730.JPG.jpeg",
   },
   {
     id: 4,
-    name: "Sapphire Cocktail Ring",
+    title: "Artisan Leather Loafer",
     description: "5-carat blue sapphire surrounded by diamonds in white gold",
-    price: 4100.00,
-    image: "https://images.unsplash.com/photo-1515562141207-7b89afe32f56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
+    price: 6200,
+    image: "/products/regular footwear/IMG_0751.JPG.jpeg",
   },
   {
     id: 5,
-    name: "Gold Hoop Earrings",
+    title: "Silk Embroidered Pump",
     description: "18k gold hollow hoops with hinged backs",
-    price: 1250.00,
-    image: "https://images.unsplash.com/photo-1515562141207-7b89afe32f56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
+    price: 4800,
+    image: "/products/shoes/IMG_0763.JPEG",
   },
   {
     id: 6,
-    name: "Black Alligator Leather Clutch",
+    title: "Emerald Chic Tote",
     description: "Handcrafted clutch with gold-tone hardware and interior pocket",
-    price: 1850.00,
-    image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
+    price: 3500,
+    image: "/products/bags/IMG_3962.JPG.jpeg",
   },
 ];
-
