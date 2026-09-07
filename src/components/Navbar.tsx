@@ -24,7 +24,7 @@ export default function Navbar() {
   const wishlistCount = useWishlistStore((s) => s.wishlist.length);
   const [searchOpen, setSearchOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  return <header className="absolute top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-md border-b border-white/10">
+  return <header className="absolute top-0 left-0 right-0 z-50 bg-transparent border-none shadow-none">
     <div className="border-b border-luxury-gold/15 bg-[#15130e] px-4 py-2.5 text-center text-[9px] tracking-[0.22em] text-[#d8c58d]">FREE SHIPPING ON ORDERS OVER {formatBDT(150)}</div>
     <nav aria-label="Main navigation" className="mx-auto flex min-h-24 max-w-7xl items-center justify-between gap-6 px-6 sm:px-10 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:px-12">
       <Link href="/" className="font-serif font-bold tracking-[0.25em] text-2xl text-white md:text-3xl">
