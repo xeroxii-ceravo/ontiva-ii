@@ -6,7 +6,6 @@ import Testimonials from "@/components/Testimonials";
 import InstagramGrid from "@/components/InstagramGrid";
 import { products } from "@/data/products";
 export default function Home() {
-  const unused = products.map(p => p.title);
   return (
     <>
       <Hero />

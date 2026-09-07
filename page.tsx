@@ -25,14 +25,14 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
           <div className="relative h-80 lg:h-96">
             <img
               src={product.image}
-              alt={product.name}
+              alt={product.title}
               className="object-cover w-full h-full rounded-lg"
             />
           </div>
 
           {/* Details */}
           <div className="flex flex-col">
-            <h1 className="font-playfairDisplay text-4xl mb-4 text-luxury-gold">{product.name}</h1>
+            <h1 className="font-playfairDisplay text-4xl mb-4 text-luxury-gold">{product.title}</h1>
             <p className="text-luxury-lighter/60 mb-6 line-clamp-4">{product.description}</p>
             <div className="mb-6">
               <span className="font-playfairDisplay text-3xl text-luxury-gold">$${product.price.toFixed(2)}</span>
@@ -60,7 +60,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
               <button
                 onClick={() => addItem({
                   id: product.id,
-                  name: product.name,
+                  name: product.title,
                   price: product.price,
                   image: product.image
                 })}
