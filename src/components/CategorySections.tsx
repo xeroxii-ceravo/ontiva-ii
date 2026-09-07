@@ -49,10 +49,10 @@ export default async function CategorySections() {
                   <FadeIn key={src} delay={(index % 4) * 0.09} className="h-full">
                     <GlowWrapper className="group h-full border border-zinc-800 bg-[#121212] transition-colors hover:border-luxury-gold/40">
                       <figure>
-                        <div className="relative aspect-[4/5] overflow-hidden bg-[#191919]">
+                        <div className="relative aspect-[3/4] overflow-hidden bg-[#121212]">
                           <Image src={src} alt={`${title} collection photo ${index + 1}`} fill
                             sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, (max-width: 1280px) 25vw, 280px"
-                            className="object-contain transition-transform duration-700 group-hover:scale-[1.03] motion-reduce:transform-none" />
+                            className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105 motion-reduce:transform-none" />
                         </div>
                         <figcaption className="flex items-center justify-between gap-3 border-t border-zinc-800 p-5">
                           <span className="font-serif text-sm uppercase tracking-[0.08em]">{title}</span>

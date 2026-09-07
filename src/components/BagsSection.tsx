@@ -19,19 +19,16 @@ export default function BagsSection() {
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {bagProducts.map((product, index) => (
             <FadeIn key={product.filename} delay={(index % 4) * 0.09} className="h-full">
-              <GlowWrapper className="h-full border border-zinc-800 bg-[#121212] transition-colors hover:border-luxury-gold/40">
+              <GlowWrapper className="group h-full border border-zinc-800 bg-[#121212] transition-colors hover:border-luxury-gold/40">
                 <article className="flex h-full flex-col">
-                  <div className="relative aspect-[4/5] bg-[#121212]">
-                    {/* Inset the image without scaling on hover to keep every edge visible. */}
-                    <div className="absolute inset-3 sm:inset-4">
+                  <div className="relative aspect-[3/4] overflow-hidden bg-[#121212]">
                       <Image
                         src={bagImagePath(product.filename)}
                         alt={product.title}
                         fill
                         sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, (max-width: 1280px) 25vw, 280px"
-                        className="object-contain object-center"
+                        className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105 motion-reduce:transform-none"
                       />
-                    </div>
                   </div>
                   <div className="flex flex-1 flex-col border-t border-zinc-800 p-5">
                     <h3 className="break-words font-serif text-lg leading-6 text-zinc-100">{product.title}</h3>

@@ -21,13 +21,13 @@ export default function PartyHillsSection() {
             <FadeIn key={product.filename} delay={(index % 4) * 0.09} className="h-full">
               <GlowWrapper className="group h-full border border-zinc-800 bg-[#121212] transition-colors hover:border-luxury-gold/40">
                 <article className="flex h-full flex-col">
-                  <div className="relative aspect-[3/4] overflow-hidden bg-[#191919]">
+                  <div className="relative aspect-[3/4] overflow-hidden bg-[#121212]">
                     <Image
                       src={partyHillsImagePath(product.filename)}
                       alt={product.title}
                       fill
                       sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, (max-width: 1280px) 25vw, 280px"
-                      className="object-cover transition-transform duration-700 group-hover:scale-[1.03] motion-reduce:transform-none"
+                      className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105 motion-reduce:transform-none"
                     />
                   </div>
                   <div className="flex flex-1 flex-col border-t border-zinc-800 p-5">

@@ -26,7 +26,7 @@ export default function ProductCard({ product }: { product: Product }) {
         transition={{ type: "spring", stiffness: 220, damping: 26 }}
         className="group flex h-full flex-col overflow-hidden border border-zinc-800 bg-[#121212] transition-colors hover:border-luxury-gold/40"
       >
-        <div className="relative aspect-[3/4] overflow-hidden">
+        <div className="relative aspect-[3/4] overflow-hidden bg-[#121212]">
           <Link
             href={`/product/${id}`}
             aria-label={`View ${title}`}
@@ -38,7 +38,7 @@ export default function ProductCard({ product }: { product: Product }) {
               alt={title}
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-              className="object-cover object-center transition duration-700 group-hover:scale-105"
+              className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105 motion-reduce:transform-none"
             />
           </Link>
           <motion.button
