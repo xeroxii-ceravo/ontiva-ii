@@ -100,15 +100,23 @@ export default function Hero() {
               TIMELESS<br />
               <span className="italic text-[#ddc898]">OPULENCE</span>
             </h1>
-            <p className="mt-5 max-w-md text-sm leading-6 text-zinc-200 [@media(max-height:500px)]:hidden">
-              Sculpted silhouettes. Golden details. Discover bags and footwear that make every arrival unforgettable.
+            <p className="text-zinc-300 text-sm md:text-base font-light tracking-wide max-w-lg mb-8">
+              Sculpted silhouettes and golden details for the modern icon.
             </p>
-            <div className="mt-6 flex flex-wrap items-center gap-3 sm:gap-4">
-              <Link href="/shop" className="inline-flex min-h-12 items-center gap-6 border border-luxury-gold bg-luxury-gold px-6 py-3 text-[10px] tracking-[0.18em] text-black transition-colors hover:bg-[#e3c665]">
-                SHOP THE EDIT <ArrowRight size={16} aria-hidden="true" />
+            <div className="flex flex-wrap items-center gap-4">
+              <Link 
+                href="/shop" 
+                className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-black font-medium text-xs md:text-sm tracking-widest uppercase transition duration-300 flex items-center gap-2"
+              >
+                Shop The Edit
+                <span className="text-lg">→</span>
               </Link>
-              <Link href="#new-arrivals" className="inline-flex min-h-12 items-center border border-white/40 bg-black/20 px-6 py-3 text-[10px] tracking-[0.18em] text-white transition-colors hover:border-luxury-gold hover:text-luxury-gold">
-                NEW ARRIVALS
+              
+              <Link 
+                href="/new-arrivals" 
+                className="px-6 py-3 border border-zinc-700 hover:border-amber-400 text-white font-medium text-xs md:text-sm tracking-widest uppercase transition duration-300 bg-black/40 backdrop-blur-sm"
+              >
+                New Arrivals
               </Link>
             </div>
           </div>
