@@ -4,6 +4,7 @@ import Image from "next/image";
 import FadeIn from "@/components/FadeIn";
 import GlowWrapper from "@/components/GlowWrapper";
 import PartyHillsSection from "@/components/PartyHillsSection";
+import BagsSection from "@/components/BagsSection";
 
 const categories = [
   { folder: "bags", title: "Bags", subtitle: "The finishing touch to your everyday." },
@@ -16,7 +17,7 @@ const categories = [
 // Public assets are scanned at build time; rebuild when images are added.
 export default async function CategorySections() {
   const collections = await Promise.all(categories.map(async (category) => {
-    if (category.folder === "party hills") return { ...category, images: [] };
+    if (category.folder === "party hills" || category.folder === "bags") return { ...category, images: [] };
     const entries = await readdir(path.join(process.cwd(), "public", "products", category.folder), { withFileTypes: true });
     const images = entries
       .filter((entry) => entry.isFile() && /\.(avif|gif|jpe?g|png|webp)$/i.test(entry.name))
@@ -29,6 +30,7 @@ export default async function CategorySections() {
   return (
     <div className="bg-[#0a0a0a]">
       {collections.map(({ folder, title, subtitle, images }, categoryIndex) => {
+        if (folder === "bags") return <BagsSection key={folder} />;
         if (folder === "party hills") return <PartyHillsSection key={folder} />;
         const id = folder.replaceAll(" ", "-");
         return (
