@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 export default function FounderPage() {
   return (
@@ -21,16 +22,17 @@ export default function FounderPage() {
           transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="mb-16 flex items-center justify-center"
         >
-          <div className="relative w-64 h-64 lg:w-80 lg:h-80">
-            {/* Placeholder for founder's portrait - replace with actual image */}
-            <img
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80"
-              alt="Founder of ONTIVA"
-              className="w-full h-full object-cover rounded-lg ring-8 ring-luxury-gold/20"
-            />
-            {/* Decorative element */}
-            <div className="absolute inset-0 rounded-lg ring-2 ring-luxury-gold/30 animate-pulse"></div>
-          </div>
+<div className="relative w-64 h-64 lg:w-80 lg:h-80 rounded-lg overflow-hidden border border-zinc-800">
+              {/* Founder's portrait */}
+              <Image
+                src="/founder/founder.png"
+                alt="Founder & Creative Director of ONTIVA"
+                fill
+                className="object-cover ring-8 ring-luxury-gold/20"
+              />
+              {/* Decorative element */}
+              <div className="absolute inset-0 rounded-lg ring-2 ring-luxury-gold/30 animate-pulse"></div>
+            </div>
         </motion.div>
 
         {/* Introduction */}
