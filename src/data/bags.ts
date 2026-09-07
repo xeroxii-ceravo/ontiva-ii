@@ -54,22 +54,22 @@ export const bagProducts: BagProduct[] = [
   },
   {
     "filename": "An imaginary photoshoot for Louis Vuitton….jpg",
-    "title": "Louis Vuitton ? Imaginary Photoshoot Edit",
+    "title": "Louis Vuitton — Imaginary Photoshoot Edit",
     "price": 4200
   },
   {
     "filename": "Architectural Autumn_ A Terracotta Mini Concept Bag.jpg",
-    "title": "Architectural Autumn ? Terracotta Mini Bag",
+    "title": "Architectural Autumn — Terracotta Mini Bag",
     "price": 4200
   },
   {
     "filename": "Beige Leather Handbag — Minimalist Luxury Aesthetic & Timeless Style.jpg",
-    "title": "Beige Leather Handbag ? Timeless Minimalism",
+    "title": "Beige Leather Handbag — Timeless Minimalism",
     "price": 4200
   },
   {
     "filename": "Elegant Beige Luxury Handbags ✨ Quiet Luxury Style.jpg",
-    "title": "Elegant Beige Handbag ? Quiet Luxury",
+    "title": "Elegant Beige Handbag — Quiet Luxury",
     "price": 4200
   },
   {
@@ -79,37 +79,37 @@ export const bagProducts: BagProduct[] = [
   },
   {
     "filename": "IMG_3961.JPG.jpeg",
-    "title": "Monogram Flap Bags ? Signature Edit",
+    "title": "Monogram Flap Bags — Signature Edit",
     "price": 4200
   },
   {
     "filename": "IMG_3962.JPG.jpeg",
-    "title": "Jewel-Tone Mini Bags ? Chain-Strap Edit",
+    "title": "Jewel-Tone Mini Bags — Chain-Strap Edit",
     "price": 4200
   },
   {
     "filename": "IMG_3963.JPG.jpeg",
-    "title": "Monogram Top-Handle Bags ? Classic Edit",
+    "title": "Monogram Top-Handle Bags — Classic Edit",
     "price": 4200
   },
   {
     "filename": "IMG_3965.JPG.jpeg",
-    "title": "Envelope Mini Bags ? Colour Edit",
+    "title": "Envelope Mini Bags — Colour Edit",
     "price": 4200
   },
   {
     "filename": "IMG_3966.JPG(1).jpeg",
-    "title": "Buckle Shoulder Bags ? Detail View",
+    "title": "Buckle Shoulder Bags — Detail View",
     "price": 4200
   },
   {
     "filename": "IMG_3966.JPG.jpeg",
-    "title": "Buckle Shoulder Bags ? Signature Colours",
+    "title": "Buckle Shoulder Bags — Signature Colours",
     "price": 4200
   },
   {
     "filename": "Louis Vuitton Black Bag (Fall 2025).jpg",
-    "title": "Louis Vuitton Black Bag ? Fall 2025",
+    "title": "Louis Vuitton Black Bag — Fall 2025",
     "price": 4200
   },
   {
@@ -119,12 +119,12 @@ export const bagProducts: BagProduct[] = [
   },
   {
     "filename": "Minimalist Fashion Inspiration _ Handcrafted Bag _ LISHÉ.jpg",
-    "title": "LISH? Handcrafted Bag ? Minimalist Style",
+    "title": "LISHÉ Handcrafted Bag — Minimalist Style",
     "price": 4200
   },
   {
     "filename": "Photographer __ LE PRINTEMPS ACCESSORIES.jpg",
-    "title": "Le Printemps Accessories ? Crimson Handbag",
+    "title": "Le Printemps Accessories — Crimson Handbag",
     "price": 4200
   },
   {
@@ -134,12 +134,12 @@ export const bagProducts: BagProduct[] = [
   },
   {
     "filename": "Satin Noir_ Minimalist Luxury Handbag Showcase.jpg",
-    "title": "Satin Noir ? Minimalist Luxury Handbag",
+    "title": "Satin Noir — Minimalist Luxury Handbag",
     "price": 4200
   },
   {
     "filename": "Spring Summer 2014 Bally Stripe Collection SHOP….jpg",
-    "title": "Bally Stripe Collection ? Spring Summer 2014",
+    "title": "Bally Stripe Collection — Spring Summer 2014",
     "price": 4200
   },
   {
@@ -149,7 +149,7 @@ export const bagProducts: BagProduct[] = [
   },
   {
     "filename": "Tuscan leather, sun-warmed sand, timeless….jpg",
-    "title": "Tuscan Leather ? Sun-Warmed Elegance",
+    "title": "Tuscan Leather — Sun-Warmed Elegance",
     "price": 4200
   },
   {

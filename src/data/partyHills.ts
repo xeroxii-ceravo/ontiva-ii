@@ -64,12 +64,12 @@ export const partyHillsProducts: PartyHillsProduct[] = [
   },
   {
     "filename": "290482244732653136 (1).jpg",
-    "title": "Dusty Rose Mary Jane Pumps ? Crystal Detail",
+    "title": "Dusty Rose Mary Jane Pumps — Crystal Detail",
     "price": 4200
   },
   {
     "filename": "290482244732653136.jpg",
-    "title": "Dusty Rose Mary Jane Pumps ? Pearl Detail",
+    "title": "Dusty Rose Mary Jane Pumps — Pearl Detail",
     "price": 4200
   },
   {
@@ -119,7 +119,7 @@ export const partyHillsProducts: PartyHillsProduct[] = [
   },
   {
     "filename": "936045103824474361 (1).jpg",
-    "title": "Golden Hour Ankle-Strap Heels ? Detail View",
+    "title": "Golden Hour Ankle-Strap Heels — Detail View",
     "price": 4200
   },
   {
@@ -194,7 +194,7 @@ export const partyHillsProducts: PartyHillsProduct[] = [
   },
   {
     "filename": "IMG_0731.JPG.jpeg",
-    "title": "Cross-Strap Block Heels ? Colour Edit",
+    "title": "Cross-Strap Block Heels — Colour Edit",
     "price": 4200
   },
   {
@@ -229,7 +229,7 @@ export const partyHillsProducts: PartyHillsProduct[] = [
   },
   {
     "filename": "IMG_0740.JPG.jpeg",
-    "title": "Sculpted Heel Mules ? Evening Edit",
+    "title": "Sculpted Heel Mules — Evening Edit",
     "price": 4200
   },
   {
@@ -239,7 +239,7 @@ export const partyHillsProducts: PartyHillsProduct[] = [
   },
   {
     "filename": "IMG_9830.JPG.jpeg",
-    "title": "Ivory Woven Sandals ? Styled View",
+    "title": "Ivory Woven Sandals — Styled View",
     "price": 4200
   },
   {
@@ -269,7 +269,7 @@ export const partyHillsProducts: PartyHillsProduct[] = [
   },
   {
     "filename": "Sparkling Glitter Heels for Special Occasions 🎉 (1).jpg",
-    "title": "Sparkling Glitter Heels for Special Occasions ? Detail View",
+    "title": "Sparkling Glitter Heels for Special Occasions — Detail View",
     "price": 4200
   },
   {
