@@ -16,8 +16,8 @@ export default function BagsSection() {
           </div>
           <span className="shrink-0 text-[10px] tracking-widest text-zinc-500">THE SIGNATURE EDIT</span>
         </FadeIn>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {bagProducts.map((product, index) => (
+        <div className="grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-4">
+          {bagProducts.slice(0, 15).map((product, index) => (
             <FadeIn key={product.filename} delay={(index % 4) * 0.09} className="h-full">
               <GlowWrapper className="group h-full border border-zinc-800 bg-[#121212] transition-colors hover:border-luxury-gold/40">
                 <article className="flex h-full flex-col">

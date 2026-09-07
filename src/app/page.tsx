@@ -13,7 +13,7 @@ export default function Home() {
         id="new-arrivals"
         title="NEW ARRIVALS"
         subtitle="Discover your next signature piece."
-        items={products.filter(product => product.price === 4200)}
+        items={products.filter(product => product.price === 4200).slice(0, 15)}
       />
       <CategorySections />
       <FadeIn>
