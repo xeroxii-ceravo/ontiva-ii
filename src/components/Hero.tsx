@@ -1,9 +1,19 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import FadeIn from "./FadeIn";
-import MagneticLink from "./MagneticLink";
-import { ArrowRight, Truck, Gem, RotateCcw, ShieldCheck } from "lucide-react";
+import { ArrowRight, ArrowLeft, Truck, Gem, RotateCcw, ShieldCheck } from "lucide-react";
+
+const slides = [
+  { filename: "download (84).jpg", label: "The Signature Edit", alt: "Woman in sunglasses holding an ivory handbag from a car window" },
+  { filename: "Minimal Chic Street Style Outfit – Elegant Urban Fashion Look.jpg", label: "City in Motion", alt: "Woman in a black suit carrying a red handbag on a city street" },
+  { filename: "download (82).jpg", label: "Golden Hour", alt: "Fashion portrait in flowing golden fabric and warm sunlight" },
+  { filename: "Brown Chocolate Editorial OOTD.jpg", label: "The Chocolate Edit", alt: "Chocolate brown handbag and heels styled with ivory trousers" },
+] as const;
+
 const features = [
   { icon: Truck, title: "Free Shipping", detail: "On orders over $150" },
   { icon: Gem, title: "Premium Quality", detail: "Every detail considered" },
@@ -15,52 +25,81 @@ const features = [
   },
 ];
 export default function Hero() {
+  const [active, setActive] = useState(0);
+  const reduceMotion = useReducedMotion();
+  const selectSlide = (index: number) => setActive((index + slides.length) % slides.length);
+
   return (
     <>
-      <motion.section
-        initial="rest"
-        whileHover="hovered"
+      <section
         aria-labelledby="hero-title"
-        className="relative isolate flex min-h-[580px] items-center overflow-hidden border-b border-zinc-800 bg-black lg:min-h-[660px]"
+        aria-roledescription="carousel"
+        className="relative isolate h-[100dvh] w-full overflow-hidden border-b border-zinc-800 bg-[#0a0a0a]"
       >
-        <motion.div
-          variants={{ rest: { scale: 1 }, hovered: { scale: 1.02 } }}
-          transition={{ duration: 1.2 }}
-          className="absolute inset-0 -z-20 bg-[url('https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=2000&q=85')] bg-cover bg-[70%_center]"
-        />
-        <div className="absolute inset-0 -z-10 bg-linear-to-r from-black via-black/80 to-black/15" />
-        <div className="mx-auto w-full max-w-7xl px-6 py-24 sm:px-10 lg:px-12">
-          <FadeIn>
-            <p className="mb-7 text-[10px] tracking-[0.4em] text-luxury-gold sm:text-xs">
-              THE ART OF EVERYDAY LUXURY
-            </p>
-          </FadeIn>
-          <FadeIn delay={0.12}>
-            <h1
-              id="hero-title"
-              className="max-w-2xl font-serif text-4xl leading-[1.15] tracking-wide text-white sm:text-6xl lg:text-7xl"
-            >
-              WHERE ELEGANCE
-              <br />
+        {slides.map((slide, index) => (
+          <motion.div
+            key={slide.filename}
+            aria-hidden={index !== active}
+            role="group"
+            aria-roledescription="slide"
+            aria-label={`${index + 1} of ${slides.length}: ${slide.label}`}
+            initial={false}
+            animate={{ opacity: index === active ? 1 : 0 }}
+            transition={{ duration: reduceMotion ? 0 : 0.9, ease: "easeInOut" }}
+            className="pointer-events-none absolute inset-0"
+          >
+            <Image
+              src={`/hero-section/${encodeURIComponent(slide.filename)}`}
+              alt={slide.alt}
+              fill
+              priority={index === 0}
+              loading={index === 0 ? undefined : "eager"}
+              sizes="100vw"
+              className="object-cover object-center"
+            />
+          </motion.div>
+        ))}
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-black/40 to-black/30" />
+        <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-6 pb-6 pt-6 sm:px-10 sm:pb-10 lg:px-12">
+          <div className="max-w-2xl pb-6 sm:pb-10">
+            <p className="mb-4 text-[10px] tracking-[0.3em] text-luxury-gold sm:text-xs">THE ART OF EVERYDAY LUXURY</p>
+            <h1 id="hero-title" className="font-serif text-[clamp(2rem,5.5vw,5rem)] leading-[1.05] tracking-wide text-white [@media(max-height:500px)]:text-3xl">
+              WHERE ELEGANCE<br />
               MEETS <span className="italic text-[#ddc898]">TIMELESS</span>
             </h1>
-          </FadeIn>
-          <FadeIn delay={0.24}>
-            <p className="mt-7 max-w-sm text-sm leading-7 text-zinc-400">
-              ONCE UPON A DAY - Onti Ek khudartho Pothshisur Jonno Regular Ranna
-              Kore Khabar niye Jeto 😭
+            <p className="mt-5 max-w-md text-sm leading-6 text-zinc-200 [@media(max-height:500px)]:hidden">
+              Considered details. Unforgettable presence. Discover bags and footwear for every chapter of your day.
             </p>
-          </FadeIn>
-          <FadeIn delay={0.36}>
-            <MagneticLink
-              href="/shop"
-              className="mt-9 inline-flex items-center gap-9 border border-luxury-gold px-8 py-4 text-xs tracking-[0.2em] text-luxury-gold transition-colors hover:bg-luxury-gold hover:text-black"
-            >
-              SHOP NOW <ArrowRight size={17} />
-            </MagneticLink>
-          </FadeIn>
+            <div className="mt-6 flex flex-wrap items-center gap-3 sm:gap-4">
+              <Link href="/shop" className="inline-flex min-h-12 items-center gap-6 border border-luxury-gold bg-luxury-gold px-6 py-3 text-[10px] tracking-[0.18em] text-black transition-colors hover:bg-[#e3c665]">
+                SHOP THE EDIT <ArrowRight size={16} aria-hidden="true" />
+              </Link>
+              <Link href="#new-arrivals" className="inline-flex min-h-12 items-center border border-white/40 bg-black/20 px-6 py-3 text-[10px] tracking-[0.18em] text-white transition-colors hover:border-luxury-gold hover:text-luxury-gold">
+                NEW ARRIVALS
+              </Link>
+            </div>
+          </div>
+          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-t border-white/20 pt-3 sm:pt-5">
+            <p aria-live="polite" aria-atomic="true" className="text-[10px] uppercase tracking-[0.18em] text-zinc-200">
+              <span className="mr-3 text-luxury-gold">{String(active + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}</span>
+              {slides[active].label}
+            </p>
+            <div className="flex items-center gap-1 sm:gap-3" role="group" aria-label="Hero slide controls">
+              <button type="button" onClick={() => selectSlide(active - 1)} aria-label="Previous hero slide" className="flex size-11 items-center justify-center text-white transition-colors hover:text-luxury-gold">
+                <ArrowLeft size={18} aria-hidden="true" />
+              </button>
+              {slides.map((slide, index) => (
+                <button key={slide.filename} type="button" onClick={() => selectSlide(index)} aria-label={`Show ${slide.label}`} aria-pressed={index === active} className="flex min-h-11 min-w-8 items-center justify-center px-1 sm:min-w-11">
+                  <span aria-hidden="true" className={`h-px w-full transition-colors duration-300 ${index === active ? "bg-luxury-gold" : "bg-white/40"}`} />
+                </button>
+              ))}
+              <button type="button" onClick={() => selectSlide(active + 1)} aria-label="Next hero slide" className="flex size-11 items-center justify-center text-white transition-colors hover:text-luxury-gold">
+                <ArrowRight size={18} aria-hidden="true" />
+              </button>
+            </div>
+          </div>
         </div>
-      </motion.section>
+      </section>
       <div className="border-b border-zinc-800 bg-[#0e0e0e]">
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-6 py-9 lg:grid-cols-4 lg:gap-0">
           {features.map(({ icon: Icon, title, detail }, index) => (
