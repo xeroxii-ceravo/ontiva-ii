@@ -27,10 +27,21 @@ export default function Navbar() {
   return <header className="relative z-30 border-b border-zinc-800 bg-[#0a0a0a]">
     <div className="border-b border-luxury-gold/15 bg-[#15130e] px-4 py-2.5 text-center text-[9px] tracking-[0.22em] text-[#d8c58d]">FREE SHIPPING ON ORDERS OVER {formatBDT(150)}</div>
     <nav aria-label="Main navigation" className="mx-auto flex min-h-24 max-w-7xl items-center justify-between gap-6 px-6 sm:px-10 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:px-12">
-      <Link href="/" className="font-serif font-bold tracking-[0.25em] text-2xl md:text-3xl bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600 bg-clip-text text-transparent text-shadow-[1px_1px_0_#4a3500,2px_2px_0_#4a3500,3px_3px_0_#4a3500,4px_4px_0_#4a3500,5px_5px_0_#4a3500]">
+      <Link href="/" className="font-serif font-bold tracking-[0.25em] text-2xl text-white md:text-3xl">
         ONTIVA
       </Link>
-      <div className="hidden items-center gap-7 lg:flex">{links.map(([label, href]) => <Link key={label} href={href} aria-current={pathname === href ? "page" : undefined} className={`text-[10px] tracking-[0.15em] transition-colors hover:text-luxury-gold ${pathname === href ? "text-luxury-gold" : "text-zinc-300`}"}>{label}</Link>)}</div>
+      <div className="hidden items-center gap-7 lg:flex">
+        {links.map(([label, href]) => (
+          <Link
+            key={label}
+            href={href}
+            aria-current={pathname === href ? "page" : undefined}
+            className={`text-[10px] tracking-[0.15em] transition-colors hover:text-luxury-gold ${pathname === href ? "text-luxury-gold" : "text-zinc-300"}`}
+          >
+            {label}
+          </Link>
+        ))}
+      </div>
       <div className="flex items-center justify-end gap-1 sm:gap-3">
         <button aria-label="Search products" aria-expanded={searchOpen} aria-controls="product-search" onClick={() => setSearchOpen(!searchOpen)} className="p-2.5 hover:text-luxury-gold">{searchOpen ? <X size={19} /> : <Search size={19} strokeWidth={1.5} />}</button>
         <Link href="/account" aria-label="Your account" className="p-2.5 hover:text-luxury-gold"><UserRound size={19} strokeWidth={1.5} /></Link>
