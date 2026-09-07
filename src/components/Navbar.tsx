@@ -3,10 +3,11 @@
 import Link from "next/link";
 import { Search, Heart, ShoppingCart } from "lucide-react";
 import { useState } from "react";
+import { useCartStore } from "@/store/useCartStore";
 
 export default function Navbar() {
+  const { toggleCart, getItemCount } = useCartStore();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [isCartOpen, setIsCartOpen] = useState(false);
 
   return (
     <div className="border-b border-luxury-lighter/20 bg-luxury-dark/50 backdrop-blur-sm">
@@ -54,16 +55,20 @@ export default function Navbar() {
           </Link>
 
           {/* Cart */}
-          <button
-            onClick={() => setIsCartOpen(!isCartOpen)}
-            className="relative hover:text-luxury-gold transition-colors p-1 rounded"
-          >
-            <ShoppingCart className="h-5 w-5" />
-            {/* Cart Badge */}
-            <div className="absolute -top-1 -right-1 flex h-3 w-3 items-center justify-center bg-luxury-gold text-xs font-medium text-luxury-dark">
-              3
-            </div>
-          </button>
+          <div className="relative">
+            <button
+              onClick={toggleCart}
+              className="hover:text-luxury-gold transition-colors p-1 rounded"
+            >
+              <ShoppingCart className="h-5 w-5" />
+              {/* Cart Badge */}
+              {getItemCount() > 0 && (
+                <div className="absolute -top-1 -right-1 flex h-3 w-3 items-center justify-center bg-luxury-gold text-xs font-medium text-luxury-dark">
+                  {getItemCount()}
+                </div>
+              )}
+            </button>
+          </div>
         </div>
       </nav>
 

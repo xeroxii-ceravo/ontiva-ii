@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { Heart, Plus } from "lucide-react";
 import Link from "next/link";
+import { useCartStore } from "@/store/useCartStore";
+import { useWishlistStore } from "@/store/useWishlistStore";
 
 interface ProductCardProps {
   id: number;
@@ -14,7 +16,9 @@ interface ProductCardProps {
 
 export default function ProductCard({ id, name, description, price, image }: ProductCardProps) {
   const [isHovered, setIsHovered] = useState(false);
-  const [isAdded, setIsAdded] = useState(false);
+  const { addItem } = useCartStore();
+  const { addToWishlist, removeFromWishlist, hasProduct } = useWishlistStore();
+  const isInWishlist = hasProduct(id);
 
   return (
     <Link href={`/product/${id}`} className="group block hover:shadow-lg transition-shadow duration-300">
@@ -29,7 +33,18 @@ export default function ProductCard({ id, name, description, price, image }: Pro
           {/* Overlay on Hover */}
           {isHovered && (
             <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-              <Heart className="text-luxury-gold hover:text-luxury-lighter/80 transition-colors h-6 w-6" />
+              <Heart
+                className={`text-luxury-gold hover:text-luxury-lighter/80 transition-colors h-6 w-6 ${
+                  isInWishlist ? "text-luxury-gold" : ""
+                }`}
+                onClick={() => {
+                  if (isInWishlist) {
+                    removeFromWishlist(id);
+                  } else {
+                    addToWishlist(id);
+                  }
+                }}
+              />
             </div>
           )}
         </div>
@@ -42,16 +57,10 @@ export default function ProductCard({ id, name, description, price, image }: Pro
             <div className="flex justify-between items-baseline mb-2">
               <span className="font-playfairDisplay text-xl text-luxury-gold">${price.toFixed(2)}</span>
               <button
-                onClick={() => setIsAdded(!isAdded)}
-                className={`p-2 rounded hover:bg-luxury-gold/10 transition-colors ${
-                  isAdded ? "bg-luxury-gold/20" : ""
-                }`}
+                onClick={() => addItem({ id, name, price, image })}
+                className="p-2 rounded hover:bg-luxury-gold/10 transition-colors"
               >
-                {isAdded ? (
-                  <Plus className="text-luxury-gold" />
-                ) : (
-                  <span className="text-sm font-medium">Add</span>
-                )}
+                <Plus className="text-luxury-gold" />
               </button>
             </div>
           </div>
