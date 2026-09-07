@@ -1,3 +1,5 @@
+"use client";
+
 import { notFound } from "next/navigation";
 import { products } from "@/data/products";
 import { Heart, ShoppingCart } from "lucide-react";
