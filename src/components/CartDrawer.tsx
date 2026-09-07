@@ -54,7 +54,7 @@ export default function CartDrawer() {
                        {item.name}
                      </h3>
                      <p className="text-luxury-lighter/60 mb-2 line-clamp-3">
-                        ৳{formatBDT(item.price)} BDT each
+                        {formatBDT(item.price)} each
                       </p>
 
                     {/* Quantity Controls */}
@@ -95,7 +95,7 @@ export default function CartDrawer() {
         <div className="flex justify-between items-baseline mb-4">
           <span className="text-xl font-playfairDisplay">Subtotal</span>
 <span className="text-xl font-playfairDisplay text-luxury-gold">
-              ৳{formatBDT(subtotal)} BDT
+              {formatBDT(subtotal)}
             </span>
         </div>
 
@@ -103,7 +103,7 @@ export default function CartDrawer() {
         {subtotal < FREE_SHIPPING_THRESHOLD && (
           <div className="mb-6">
 <p className="text-luxury-lighter/60 mb-2">
-                Free shipping on orders over ৳{formatBDT(FREE_SHIPPING_THRESHOLD)} BDT
+                Free shipping on orders over {formatBDT(FREE_SHIPPING_THRESHOLD)}
               </p>
             <div className="w-full bg-luxury-lighter/20 rounded-full h-2.5">
               <div
@@ -113,7 +113,7 @@ export default function CartDrawer() {
             </div>
 <p className="text-xs text-luxury-lighter/50 mt-1">
                 {freeShippingMissing > 0
-                  ? `Add ৳{formatBDT(freeShippingMissing)} BDT more to get free shipping`
+                  ? `Add {formatBDT(freeShippingMissing)} more to get free shipping`
                   : "Free shipping unlocked!"}
               </p>
           </div>
