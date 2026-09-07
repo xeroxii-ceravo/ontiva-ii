@@ -96,13 +96,6 @@ export default function Hero() {
         <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-6 pb-6 pt-6 sm:px-10 sm:pb-10 lg:px-12">
           <div className="max-w-2xl pb-6 sm:pb-10">
             <p className="mb-4 text-[10px] tracking-[0.3em] text-luxury-gold sm:text-xs">ONTIVA / THE ART OF REFINED LIVING</p>
-            <h1 id="hero-title" className="font-serif text-[clamp(2rem,5.5vw,5rem)] leading-[1.05] tracking-wide text-white [@media(max-height:500px)]:text-3xl">
-              TIMELESS<br />
-              <span className="italic text-[#ddc898]">OPULENCE</span>
-            </h1>
-            <p className="text-zinc-300 text-sm md:text-base font-light tracking-wide max-w-lg mb-8">
-              Sculpted silhouettes and golden details for the modern icon.
-            </p>
             <div className="flex flex-wrap items-center gap-4">
               <Link 
                 href="/shop" 
