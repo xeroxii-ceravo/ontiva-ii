@@ -3,6 +3,7 @@ import path from "node:path";
 import Image from "next/image";
 import FadeIn from "@/components/FadeIn";
 import GlowWrapper from "@/components/GlowWrapper";
+import PartyHillsSection from "@/components/PartyHillsSection";
 
 const categories = [
   { folder: "bags", title: "Bags", subtitle: "The finishing touch to your everyday." },
@@ -15,6 +16,7 @@ const categories = [
 // Public assets are scanned at build time; rebuild when images are added.
 export default async function CategorySections() {
   const collections = await Promise.all(categories.map(async (category) => {
+    if (category.folder === "party hills") return { ...category, images: [] };
     const entries = await readdir(path.join(process.cwd(), "public", "products", category.folder), { withFileTypes: true });
     const images = entries
       .filter((entry) => entry.isFile() && /\.(avif|gif|jpe?g|png|webp)$/i.test(entry.name))
@@ -27,6 +29,7 @@ export default async function CategorySections() {
   return (
     <div className="bg-[#0a0a0a]">
       {collections.map(({ folder, title, subtitle, images }, categoryIndex) => {
+        if (folder === "party hills") return <PartyHillsSection key={folder} />;
         const id = folder.replaceAll(" ", "-");
         return (
           <section key={folder} id={id} aria-labelledby={`${id}-heading`} className="scroll-mt-24 border-t border-zinc-800">
