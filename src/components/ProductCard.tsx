@@ -22,12 +22,13 @@ export default function ProductCard({
   const addToWishlist = useWishlistStore((s) => s.addToWishlist);
   const removeFromWishlist = useWishlistStore((s) => s.removeFromWishlist);
   return (
+    <GlowWrapper className="h-full">
     <motion.article
       whileHover={{ scale: 1.02 }}
       transition={{ type: "spring", stiffness: 220, damping: 26 }}
       className="group flex h-full flex-col overflow-hidden border border-zinc-800 bg-[#121212] transition-colors hover:border-luxury-gold/40"
     >
-<GlowWrapper className="relative aspect-[4/5] overflow-hidden bg-[#191919]">
+      <div className="relative aspect-[4/5] overflow-hidden bg-[#191919]">
          <Link
            href={`/product/${id}`}
            aria-label={`View ${name}`}
@@ -64,7 +65,7 @@ export default function ProductCard({
              fill={saved ? "currentColor" : "none"}
            />
          </motion.button>
-       </GlowWrapper>
+       </div>
       <div className="flex flex-1 flex-col p-6">
         <Link
           href={`/product/${id}`}
@@ -99,5 +100,6 @@ export default function ProductCard({
         </span>
       </div>
     </motion.article>
+    </GlowWrapper>
   );
 }

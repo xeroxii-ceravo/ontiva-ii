@@ -1,5 +1,4 @@
-"use client";
-
+import CategorySections from "@/components/CategorySections";
 import FadeIn from "@/components/FadeIn";
 import Hero from "@/components/Hero";
 import ProductGrid from "@/components/ProductGrid";
@@ -16,9 +15,7 @@ export default function Home() {
         subtitle="Discover your next signature piece."
         items={products.slice(0, 4)}
       />
-      <div className="border-t border-zinc-800">
-        <ProductGrid items={products.slice(2, 6)} />
-      </div>
+      <CategorySections />
       <FadeIn>
         <Testimonials />
       </FadeIn>
